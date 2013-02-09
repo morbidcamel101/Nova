@@ -32,4 +32,4 @@ Entity framework takes the pain out of database driven development and has brill
 ## WPF
 Plain old simple WPF. The point was not to make it to fancy. Illustrates how entity databindings work and also how LINQ over OData works. 
 The UI was written to be Multi-Threaded and works quite well. It also illustrates the use of Timers for purposes of synching user selections.
-I also experemented with a slightly different approach from MVVC. I call it MVVD, Model View View Delegate :)
+I also experemented with a slightly different approach from MVC or MVVM. I call it MVTD, Model View Target Delegate :)
