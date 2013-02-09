@@ -28,3 +28,8 @@ Please Use NuGet. See http://msdn.microsoft.com/en-us/data/ef.aspx
 
 ### Motivation: 
 Entity framework takes the pain out of database driven development and has brilliant extensions like OData WCF Data Services that makes this framework one of the best frameworks to use for LOB applications. I initially used a Model First approach to build my entity model and generate the initial database before importing it into a SSDT project where I can then update the model to reﬂect changes made to the database.
+
+## WPF
+Plain old simple WPF. The point was not to make it to fancy. Illustrates how entity databindings work and also how LINQ over OData works. 
+The UI was written to be Multi-Threaded and works quite well. It also illustrates the use of Timers for purposes of synching user selections.
+I also experemented with a slightly different approach from MVVC. I call it MVVD, Model View View Delegate :)
