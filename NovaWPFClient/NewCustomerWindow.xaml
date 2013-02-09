@@ -1,0 +1,57 @@
+﻿<Window x:Class="Nova.UI.NewCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New Customer" Height="386" Width="330" mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:my="clr-namespace:Nova.UI.DataService" 
+        Loaded="Window_Loaded"
+        Background="#FFB3CDD3" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <CollectionViewSource x:Key="customersViewSource" d:DesignSource="{d:DesignInstance my:Customer, CreateList=True}" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource customersViewSource}" HorizontalAlignment="Left" Name="grid1" VerticalAlignment="Top" Height="346" Width="308">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Content="Full Name:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <TextBox Height="23" Grid.Row="1" HorizontalAlignment="Left" Margin="102,3,0,3" Name="nameTextBox" Text="{Binding Path=Name, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="160" />
+        <Label Content="Gender:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <TextBox Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="102,3,0,3" Name="genderTextBox" Text="{Binding Path=Gender, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="34" />
+        <Label Content="Date of Birth:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="3" Height="25" HorizontalAlignment="Left" Margin="102,3,0,3" Name="dOBDatePicker" SelectedDate="{Binding Path=DOB, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="160" />
+        <Label Content="House Number:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <TextBox Grid.Row="4" Height="23" HorizontalAlignment="Left" Margin="102,3,0,3" Name="houseNumberTextBox" Text="{Binding Path=HouseNumber, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="53" />
+        <Label Content="Address Line 1:" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <TextBox Grid.Row="5" Height="23" HorizontalAlignment="Left" Margin="102,3,0,3" Name="addressLine1TextBox" Text="{Binding Path=AddressLine1, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" Width="160" />
+        <Label Content="Location:" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <ComboBox DisplayMemberPath="Description" Grid.Row="6" Height="23" HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="102,3,0,3" Name="comboLocation" VerticalAlignment="Center" Width="160" Loaded="ComboBox_Loaded" SelectionChanged="ComboBox_SelectionChanged" >
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Label Content="Category:" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+        <ComboBox DisplayMemberPath="Name" Grid.Row="7" Height="23" HorizontalAlignment="Left" ItemsSource="{Binding}" Margin="102,3,0,3" Name="comboCategory" VerticalAlignment="Center" Width="160" Loaded="ComboBox_Loaded"  SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Label Content="New Customer" FontSize="17" FontWeight="Bold" Foreground="#FF103F5A" Height="40" HorizontalAlignment="Left" Margin="12,0,0,0" Name="label2" VerticalAlignment="Top" Width="143" />
+        <Button Content="Add" Grid.Row="9" Height="23" HorizontalAlignment="Left" Margin="61,28,0,0" Name="buttonAdd" VerticalAlignment="Top" Width="75" Click="Add_Click" FontWeight="Bold" />
+        <Button Content="Ignore" Grid.Row="9" Height="23" HorizontalAlignment="Right" Margin="0,29,70,0" Name="buttonIgnore" VerticalAlignment="Top" Width="75" Click="Ignore_Click" />
+    </Grid>
+        
+</Window>

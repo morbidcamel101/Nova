@@ -1,0 +1,72 @@
+﻿<ui:ContentPage x:Class="Nova.UI.CategorySummary" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:my="clr-namespace:Nova.UI.DataService"
+      xmlns:ui="clr-namespace:Nova.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Height="Auto" Width="Auto"
+      Loaded="Page_Loaded"
+	    Title="Category Analysis" Background="#FFB3CDD3">
+    <ui:ContentPage.Resources>
+        <CollectionViewSource x:Key="categoryViewSource" d:DesignSource="{d:DesignInstance my:Category, CreateList=True}" />
+        <CollectionViewSource x:Key="customersViewSource" d:DesignSource="{d:DesignInstance my:Customer, CreateList=True}" />
+        <RadialGradientBrush x:Key="NovaBack">
+            <GradientStop Color="#FF1F8BC7" Offset="0" />
+            <GradientStop Color="#FF204B64" Offset="1" />
+        </RadialGradientBrush>
+    </ui:ContentPage.Resources>
+
+    <DockPanel>
+        <TabControl Height="Auto" HorizontalAlignment="Left" Name="tabs" VerticalAlignment="Top" Width="Auto" Background="#FFB3CDD3">
+            <TabItem Header="Summary" Name="tabSummary" FontSize="15" Background="#FFB3CDD3" FontWeight="Normal">
+                <DockPanel >
+                    <WebBrowser Height="Auto" Name="webBrowser" Width="Auto"  />
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Browse" Name="tabInspect" FontSize="15" FontWeight="Normal">
+                <Grid Height="Auto" Width="Auto" IsManipulationEnabled="True" DataContext="{StaticResource categoryViewSource}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="1" Height="Auto" HorizontalAlignment="Center" Name="listBoxCategory" VerticalAlignment="Center" Width="Auto" DisplayMemberPath="Name" ItemsSource="{Binding}" SelectedValuePath="Name" SelectedValue="{Binding Path=Name, Mode=Default, ValidatesOnExceptions=true, NotifyOnValidationError=true}" SelectionChanged="listBoxCategory_SelectionChanged" FontWeight="Normal" />
+                    <Label Name="labelLoading" Content="Loading..." Grid.Row="1" Height="45"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Width="134" VerticalContentAlignment="Center" Margin="32,212,34,194" Visibility="Hidden" FontWeight="Bold" Background="{StaticResource ResourceKey=NovaBack}" Foreground="White" />
+                    <Label Content="Categories" FontSize="17" Foreground="#FF103F5A" Height="40" HorizontalAlignment="Left" Margin="51,0,0,0" Name="label1" VerticalAlignment="Top" Width="143" Grid.RowSpan="2" FontWeight="Bold" />
+                    <Label Content="Customers" FontSize="17" Foreground="#FF103F5A" Height="40" HorizontalAlignment="Left" Margin="229,0,0,0" Name="label2" VerticalAlignment="Top" Width="143" Grid.Column="1" Grid.RowSpan="2" FontWeight="Bold" />
+                    <DataGrid AutoGenerateColumns="False" DataContext="{StaticResource customersViewSource}" EnableRowVirtualization="True" Grid.Column="1" Grid.Row="1" Height="Auto" HorizontalAlignment="Left" ItemsSource="{Binding}" Name="customersDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" VerticalAlignment="Top" Width="Auto" Background="#FFB5CED4" FontWeight="Normal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Path=Name}" Header="Name" Width="200" />
+                            <DataGridTextColumn x:Name="genderColumn" Binding="{Binding Path=Gender}" Header="Gender" Width="SizeToHeader" />
+                            <DataGridTemplateColumn x:Name="dOBColumn" Header="Date of Birth" Width="150" MinWidth="50">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding Path=DOB, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn x:Name="houseNumberColumn" Binding="{Binding Path=HouseNumber}" Header="House #" Width="70" />
+                            <DataGridTextColumn x:Name="addressLine1Column" Binding="{Binding Path=AddressLine1}" Header="Address Line 1" Width="300" />
+                            <DataGridTemplateColumn x:Name="locationColumn" Header="Location" Width="200" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Name="comboLocation" Loaded="ComboBox_Loaded">
+                                            <ComboBoxItem Content="{Binding Path=Location}" />
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Name="labelCustomersLoading" Content="Loading..." Grid.Row="1" Height="45"   HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Width="134" VerticalContentAlignment="Center" Margin="238,203,228,203" Visibility="Hidden" Grid.Column="1" FontWeight="Bold" Background="{StaticResource ResourceKey=NovaBack}" Foreground="White"  />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</ui:ContentPage>

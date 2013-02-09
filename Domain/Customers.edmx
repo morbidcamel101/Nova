@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Nova.Domain.Customers.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NovaDomainCustomersStoreContainer">
+          <EntitySet Name="Categories" EntityType="Nova.Domain.Customers.Store.Categories" store:Type="Tables" Schema="Customers" />
+          <EntitySet Name="Customers" EntityType="Nova.Domain.Customers.Store.Customers" store:Type="Tables" Schema="Customers" />
+          <EntitySet Name="CustomerTracking" EntityType="Nova.Domain.Customers.Store.CustomerTracking" store:Type="Tables" Schema="Customers" />
+          <EntitySet Name="Locations" EntityType="Nova.Domain.Customers.Store.Locations" store:Type="Tables" Schema="Customers" />
+          <EntitySet Name="SystemUsers" EntityType="Nova.Domain.Customers.Store.SystemUsers" store:Type="Tables" Schema="Customers" />
+          <AssociationSet Name="FK_CategoryCustomer" Association="Nova.Domain.Customers.Store.FK_CategoryCustomer">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationCustomer" Association="Nova.Domain.Customers.Store.FK_LocationCustomer">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tracking_Customer" Association="Nova.Domain.Customers.Store.FK_Tracking_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="CustomerTracking" EntitySet="CustomerTracking" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Gender" Type="nchar" Nullable="false" MaxLength="1" />
+          <Property Name="HouseNumber" Type="int" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="500" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerTracking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OperationType" Type="nchar" Nullable="false" MaxLength="1" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="CustomerId" Type="bigint" Nullable="false" />
+          <Property Name="SystemUserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SystemUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_CategoryCustomer">
+          <End Role="Categories" Type="Nova.Domain.Customers.Store.Categories" Multiplicity="1" />
+          <End Role="Customers" Type="Nova.Domain.Customers.Store.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationCustomer">
+          <End Role="Locations" Type="Nova.Domain.Customers.Store.Locations" Multiplicity="1" />
+          <End Role="Customers" Type="Nova.Domain.Customers.Store.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tracking_Customer">
+          <End Role="Customers" Type="Nova.Domain.Customers.Store.Customers" Multiplicity="1" />
+          <End Role="CustomerTracking" Type="Nova.Domain.Customers.Store.CustomerTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerTracking">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_AddUpdateCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Customers">
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_AddUpdateLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Customers">
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
+          <Parameter Name="State" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetCustomerByLocationSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Customers">
+          <Parameter Name="LocationMode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetCustomersByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Customers">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Nova.Domain.Customers" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="CustomersContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Nova.Domain.Customers.Category" />
+          <EntitySet Name="SystemUsers" EntityType="Nova.Domain.Customers.SystemUser" />
+          <EntitySet Name="Locations" EntityType="Nova.Domain.Customers.Location" />
+          <EntitySet Name="Customers" EntityType="Nova.Domain.Customers.Customer" />
+          <AssociationSet Name="LocationCustomer" Association="Nova.Domain.Customers.LocationCustomer">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryCustomer" Association="Nova.Domain.Customers.CategoryCustomer">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="CustomerTrackings" EntityType="Nova.Domain.Customers.CustomerTracking" />
+          <AssociationSet Name="FK_Tracking_Customer" Association="Nova.Domain.Customers.FK_Tracking_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerTracking" EntitySet="CustomerTrackings" />
+          </AssociationSet>
+          <AssociationSet Name="SystemUserCustomerTracking" Association="Nova.Domain.Customers.SystemUserCustomerTracking">
+            <End Role="SystemUser" EntitySet="SystemUsers" />
+            <End Role="CustomerTracking" EntitySet="CustomerTrackings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Documentation>
+            <LongDescription>The main customer entity</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" >
+            <Documentation>
+              <LongDescription>Name of the description</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="Gender" Nullable="false" FixedLength="true" MaxLength="1" />
+          <Property Type="Int32" Name="HouseNumber" Nullable="false" />
+          <Property Type="String" Name="AddressLine1" Nullable="true" Unicode="true" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" >
+            <Documentation>
+              <LongDescription>The date of birth for the customer</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Nova.Domain.Customers.LocationCustomer" FromRole="Customer" ToRole="Location" />
+          <Property Type="Int32" Name="LocationId" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Nova.Domain.Customers.CategoryCustomer" FromRole="Customer" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="CustomerTrackings" Relationship="Nova.Domain.Customers.FK_Tracking_Customer" FromRole="Customer" ToRole="CustomerTracking" />
+          </EntityType>
+        <EntityType Name="Location">
+          <Documentation>
+            <LongDescription>The location of customers. Location has a granularity of City</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="String" Name="State" Nullable="false" />
+          <Property Type="String" Name="Country" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Nova.Domain.Customers.LocationCustomer" FromRole="Location" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Documentation>
+            <LongDescription>The Category of the customer</LongDescription>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" >
+            <Documentation>
+              <LongDescription>Name of the customer category</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Customers" Relationship="Nova.Domain.Customers.CategoryCustomer" FromRole="Category" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="CustomerTrackings" Relationship="Nova.Domain.Customers.SystemUserCustomerTracking" FromRole="SystemUser" ToRole="CustomerTracking" />
+        </EntityType>
+        <Association Name="LocationCustomer">
+          <End Type="Nova.Domain.Customers.Location" Role="Location" Multiplicity="1" />
+          <End Type="Nova.Domain.Customers.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryCustomer">
+          <End Type="Nova.Domain.Customers.Category" Role="Category" Multiplicity="1" />
+          <End Type="Nova.Domain.Customers.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CustomerTracking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="OperationType" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int64" Name="CustomerId" Nullable="false" />
+          <Property Type="Int32" Name="SystemUserId" Nullable="true" />
+          <NavigationProperty Name="Customer" Relationship="Nova.Domain.Customers.FK_Tracking_Customer" FromRole="CustomerTracking" ToRole="Customer" />
+          <NavigationProperty Name="SystemUser" Relationship="Nova.Domain.Customers.SystemUserCustomerTracking" FromRole="CustomerTracking" ToRole="SystemUser" />
+        </EntityType>
+        <Association Name="FK_Tracking_Customer">
+          <End Type="Nova.Domain.Customers.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Nova.Domain.Customers.CustomerTracking" Role="CustomerTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerTracking">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SystemUserCustomerTracking">
+          <End Type="Nova.Domain.Customers.SystemUser" Role="SystemUser" Multiplicity="0..1" />
+          <End Type="Nova.Domain.Customers.CustomerTracking" Role="CustomerTracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerTracking">
+              <PropertyRef Name="SystemUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NovaDomainCustomersStoreContainer" CdmEntityContainer="CustomersContainer">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(Nova.Domain.Customers.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(Nova.Domain.Customers.SystemUser)">
+        <MappingFragment StoreEntitySet="SystemUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(Nova.Domain.Customers.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(Nova.Domain.Customers.Customer)">
+        <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTrackings">
+            <EntityTypeMapping TypeName="Nova.Domain.Customers.CustomerTracking">
+              <MappingFragment StoreEntitySet="CustomerTracking">
+                <ScalarProperty Name="SystemUserId" ColumnName="SystemUserId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="DefaultDatabaseSchema" Value="Customers" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Customers" >
+        <EntityTypeShape EntityType="Nova.Domain.Customers.Customer" Width="2" PointX="8.125" PointY="1.5" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="Nova.Domain.Customers.Location" Width="1.5" PointX="6.125" PointY="5.375" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Nova.Domain.Customers.Category" Width="1.5" PointX="10.5" PointY="5.5" Height="1.59568359375" />
+        <InheritanceConnector EntityType="Nova.Domain.Customers.Location" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.75" PointY="3.4802864583333339" />
+          <ConnectorPoint PointX="6.75" PointY="4.125" />
+          <ConnectorPoint PointX="2.625" PointY="4.125" />
+          <ConnectorPoint PointX="2.625" PointY="4.5" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="Nova.Domain.Customers.Customer" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.75" PointY="3.4802864583333339" />
+          <ConnectorPoint PointX="6.75" PointY="4.125" />
+          <ConnectorPoint PointX="7" PointY="4.125" />
+          <ConnectorPoint PointX="7" PointY="4.5" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="Nova.Domain.Customers.SystemUser" Width="1.5" PointX="0.5" PointY="1.5" Height="1.4033821614583331" />
+        <AssociationConnector Association="Nova.Domain.Customers.SystemUserCustomer">
+          <ConnectorPoint PointX="3.375" PointY="1.71875" />
+          <ConnectorPoint PointX="8.125" PointY="1.71875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Nova.Domain.Customers.LocationCustomer">
+          <ConnectorPoint PointX="6.875" PointY="5.375" />
+          <ConnectorPoint PointX="6.875" PointY="3.0670475260416663" />
+          <ConnectorPoint PointX="8.125" PointY="3.0670475260416663" />
+        </AssociationConnector>
+        <AssociationConnector Association="Nova.Domain.Customers.CategoryCustomer">
+          <ConnectorPoint PointX="11.25" PointY="5.5" />
+          <ConnectorPoint PointX="11.25" PointY="3.0670475260416663" />
+          <ConnectorPoint PointX="10.125" PointY="3.0670475260416663" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Nova.Domain.Customers.CustomerTracking" Width="1.875" PointX="3.875" PointY="1.125" Height="2.3648893229166661" />
+        <AssociationConnector Association="Nova.Domain.Customers.FK_Tracking_Customer" >
+          <ConnectorPoint PointX="8.125" PointY="2.2210237630208329" />
+          <ConnectorPoint PointX="5.75" PointY="2.2210237630208329" />
+        </AssociationConnector>
+        <AssociationConnector Association="Nova.Domain.Customers.CustomerTrackingSystemUser">
+          <ConnectorPoint PointX="4.25" PointY="3.9514376744791662" />
+          <ConnectorPoint PointX="2.625" PointY="3.9514376744791662" />
+          <ConnectorPoint PointX="2.625" PointY="2.7879850260416661" />
+        </AssociationConnector>
+        <AssociationConnector Association="Nova.Domain.Customers.SystemUserCustomerTracking">
+          <ConnectorPoint PointX="2" PointY="2.297841796875" />
+          <ConnectorPoint PointX="3.875" PointY="2.297841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

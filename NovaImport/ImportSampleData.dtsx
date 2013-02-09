@@ -1,0 +1,2885 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/6/2013 9:10:29 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BILBO"
+  DTS:CreatorName="BILBO\Johan"
+  DTS:DTSID="{99814726-90D8-439D-B52E-A520978A5A8E}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ImportSampleData"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{B07B66A8-A276-496B-9450-9431E453C8EA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.NovaDemo]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C82C30F3-2D83-48EA-A870-D33FA2F836C5}"
+      DTS:ObjectName="LocalHost.NovaDemo">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=NovaDemo;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Sample Data Source]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2189B0D5-0546-4629-868B-4DDF8F567EDE}"
+      DTS:ObjectName="Sample Data Source">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Projects\Nova\SampleData.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{2E2F48FA-CDB4-4003-B9D2-75FBC8F94C6C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{EEC9DD79-A817-43FD-A363-C17D3E69758C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="House Number"
+              DTS:DTSID="{CD5C640C-D12A-4AB4-91D4-09B2EFB2B1AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Address Line 1"
+              DTS:DTSID="{1AD135B4-0215-4254-BC6D-D5CA72CDF624}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State"
+              DTS:DTSID="{961F9982-B29D-4C53-A8DF-735FAE8A7551}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Country"
+              DTS:DTSID="{51BF1CC0-6CA4-44C4-AA62-A6800533A8E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Category"
+              DTS:DTSID="{350634BF-228B-4204-A86B-3E1B67CB1883}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date Of Birth"
+              DTS:DTSID="{7F4A9EDA-A6AF-422B-B52C-B3831037FF0C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Build Meta-Data"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{2A675932-9CEA-46AB-AEAB-1B17EB5FBCB2}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Build Meta-Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Build Meta-Data\Add Update Category"
+              componentClassID="{93FFEC66-CBC8-4C7F-9C6A-CB1C17A7567D}"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Add Update Category"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [Customers].[sp_AddUpdateCategories] ?, ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Build Meta-Data\Add Update Category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input].Columns[CategoryId]"
+                      cachedDataType="i4"
+                      cachedName="CategoryId"
+                      externalMetadataColumnId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input].ExternalColumns[@CategoryId]"
+                      lineageId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Match Output].Columns[CategoryId]" />
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input].Columns[_Category]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_Category"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input].ExternalColumns[@Name]"
+                      lineageId="Package\Build Meta-Data\Sort Categories.Outputs[Sort Output].Columns[_Category]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input].ExternalColumns[@CategoryId]"
+                      dataType="i4"
+                      name="@CategoryId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input].ExternalColumns[@Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="@Name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Add Update Category.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Add Update Category.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Add Update Category.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Add Update Category.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Add Update Category.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Add Update Category.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Add Update Locations"
+              componentClassID="{93FFEC66-CBC8-4C7F-9C6A-CB1C17A7567D}"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Add Update Locations"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC [Customers].[sp_AddUpdateLocations] ?, ?, ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Build Meta-Data\Add Update Locations.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].Columns[_City]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_City"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].ExternalColumns[@City]"
+                      lineageId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_City]" />
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].Columns[_State]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_State"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].ExternalColumns[@State]"
+                      lineageId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_State]" />
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].Columns[_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="_Country"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].ExternalColumns[@Country]"
+                      lineageId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_Country]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].ExternalColumns[@City]"
+                      dataType="wstr"
+                      length="150"
+                      name="@City">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].ExternalColumns[@State]"
+                      dataType="wstr"
+                      length="100"
+                      name="@State">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input].ExternalColumns[@Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="@Country">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Add Update Locations.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Add Update Locations.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Add Update Locations.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Add Update Locations.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Add Update Locations.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Lookup Category"
+              componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Category"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Customers].[Categories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Customers].[Categories]) [refTable]
+where [refTable].[Name] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Build Meta-Data\Sort Categories.Outputs[Sort Output].Columns[_Category]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Build Meta-Data\Lookup Category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Lookup Category.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Lookup Category.Inputs[Lookup Input].Columns[_Category]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_Category"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Build Meta-Data\Sort Categories.Outputs[Sort Output].Columns[_Category]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Build Meta-Data\Lookup Category.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Match Output].Columns[CategoryId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Match Output].Columns[CategoryId]"
+                      name="CategoryId"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Build Meta-Data\Lookup Category.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Build Meta-Data\Lookup Category.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Multicast"
+              componentClassID="{EC139FBC-694E-490B-8EA7-35690FB0F445}"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Build Meta-Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Build Meta-Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Build Meta-Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Prepare"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Prepare"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input].Columns[Category]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Category"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input].Columns[Country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Country"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Country]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="150"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Category]"
+                      name="_Category"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,150)#{Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Category]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,150)Category</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="50"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Country]"
+                      name="_Country"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Country]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Country</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="150"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_State]"
+                      name="_State"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,150)#{Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[State]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,150)State</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="150"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_City]"
+                      name="_City"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,150)""</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,150)""</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Sample Data"
+              componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Sample Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Build Meta-Data\Sample Data.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Sample Data Source]"
+                  connectionManagerRefId="Package.ConnectionManagers[Sample Data Source]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      length="50"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Country]"
+                      length="50"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Category]"
+                      length="50"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[House Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="House Number" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Address Line 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Address Line 1" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Date Of Birth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Date Of Birth" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Sort Categories"
+              componentClassID="{5B1A3FF5-D366-4D75-AD1F-F19A36FCBEDB}"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Categories"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Sort Categories.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Sort Categories.Inputs[Sort Input].Columns[_Category]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_Category"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Category]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Sort Categories.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sort Categories.Outputs[Sort Output].Columns[_Category]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Build Meta-Data\Sort Categories.Outputs[Sort Output].Columns[_Category]"
+                      name="_Category"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Category]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Build Meta-Data\Sort Locations"
+              componentClassID="{5B1A3FF5-D366-4D75-AD1F-F19A36FCBEDB}"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Locations"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Build Meta-Data\Sort Locations.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Sort Locations.Inputs[Sort Input].Columns[_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="_Country"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Sort Locations.Inputs[Sort Input].Columns[_State]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_State"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_State]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Build Meta-Data\Sort Locations.Inputs[Sort Input].Columns[_City]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_City"
+                      lineageId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_City]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_Country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_Country]"
+                      name="_Country"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_State]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_State]"
+                      name="_State"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_State]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_City]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output].Columns[_City]"
+                      name="_City"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Build Meta-Data\Prepare.Outputs[Derived Column Output].Columns[_City]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Build Meta-Data.Paths[Derived Column Output]"
+              endId="Package\Build Meta-Data\Multicast.Inputs[Multicast Input 1]"
+              name="Derived Column Output"
+              startId="Package\Build Meta-Data\Prepare.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Build Meta-Data.Paths[Flat File Source Output]"
+              endId="Package\Build Meta-Data\Prepare.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Build Meta-Data\Sample Data.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Build Meta-Data.Paths[Lookup Match Output]"
+              endId="Package\Build Meta-Data\Add Update Category.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Build Meta-Data\Lookup Category.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Build Meta-Data.Paths[Multicast Output 1]"
+              endId="Package\Build Meta-Data\Sort Locations.Inputs[Sort Input]"
+              name="Multicast Output 1"
+              startId="Package\Build Meta-Data\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Build Meta-Data.Paths[Multicast Output 2]"
+              endId="Package\Build Meta-Data\Sort Categories.Inputs[Sort Input]"
+              name="Multicast Output 2"
+              startId="Package\Build Meta-Data\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Build Meta-Data.Paths[Sort Output]"
+              endId="Package\Build Meta-Data\Lookup Category.Inputs[Lookup Input]"
+              name="Sort Output"
+              startId="Package\Build Meta-Data\Sort Categories.Outputs[Sort Output]" />
+            <path
+              refId="Package\Build Meta-Data.Paths[Sort Output1]"
+              endId="Package\Build Meta-Data\Add Update Locations.Inputs[OLE DB Command Input]"
+              name="Sort Output"
+              startId="Package\Build Meta-Data\Sort Locations.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import Customers"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{53FD3260-81FC-49D8-9C45-72A553560D49}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Customers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Customers\Add or Update Customers"
+              componentClassID="{93FFEC66-CBC8-4C7F-9C6A-CB1C17A7567D}"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Add or Update Customers"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC ? = [Customers].[sp_AddUpdateCustomers] ?,?,?,?,?,?,?,?,?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Customers\Add or Update Customers.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_Name"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@Name]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Name]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="_Gender"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@Gender]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Gender]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_HouseNumber]"
+                      cachedDataType="i4"
+                      cachedName="_HouseNumber"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@HouseNumber]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_HouseNumber]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_AddressLine1]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="_AddressLine1"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@AddressLine1]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_AddressLine1]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_DOB]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="_DOB"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@DOB]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_DOB]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_City]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_City"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@City]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_City]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_State]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="_State"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@State]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_State]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="_Country"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@Country]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Country]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_Category]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_Category"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@CategoryName]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Category]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_SystemUserID]"
+                      cachedDataType="i4"
+                      cachedName="_SystemUserID"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@SystemUserId]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_SystemUserID]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_CustomerIdOutput]"
+                      cachedDataType="i4"
+                      cachedName="_CustomerIdOutput"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@RETURN_VALUE]"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_CustomerIdOutput]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].Columns[_CustomerId]"
+                      cachedDataType="i8"
+                      cachedName="_CustomerId"
+                      externalMetadataColumnId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@CustomerId]"
+                      lineageId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Match Output].Columns[_CustomerId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@RETURN_VALUE]"
+                      dataType="i4"
+                      name="@RETURN_VALUE">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">82</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@CustomerId]"
+                      dataType="i4"
+                      name="@CustomerId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@Name]"
+                      dataType="wstr"
+                      length="150"
+                      name="@Name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="@Gender">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@HouseNumber]"
+                      dataType="i4"
+                      name="@HouseNumber">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@AddressLine1]"
+                      dataType="wstr"
+                      length="500"
+                      name="@AddressLine1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@DOB]"
+                      dataType="dbTimeStamp"
+                      name="@DOB">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@City]"
+                      dataType="wstr"
+                      length="150"
+                      name="@City">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@State]"
+                      dataType="wstr"
+                      length="100"
+                      name="@State">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="@Country">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@CategoryName]"
+                      dataType="wstr"
+                      length="100"
+                      name="@CategoryName">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input].ExternalColumns[@SystemUserId]"
+                      dataType="i4"
+                      name="@SystemUserId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Customers\Add or Update Customers.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Customers\Add or Update Customers.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Add or Update Customers.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Customers\Add or Update Customers.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Add or Update Customers.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB"
+              componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Customer on Name + Gender + DOB"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Customers].[Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Customers].[Customers]) [refTable]
+where [refTable].[Gender] = ? and [refTable].[Name] = ? and [refTable].[DOB] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="500" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Gender" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HouseNumber" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressLine1" dataType="DT_WSTR" length="500" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DOB" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LocationId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CategoryId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Gender]};#{Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Name]};#{Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_DOB]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.NovaDemo]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input].Columns[_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="_Name"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Name]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input].Columns[_Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="_Gender"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Gender]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Gender</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input].Columns[_DOB]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="_DOB"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_DOB]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DOB</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Match Output].Columns[_CustomerId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Match Output].Columns[_CustomerId]"
+                      name="_CustomerId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Id</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Customers\Prepare"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Prepare"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Customers\Prepare.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[Category]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Category"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[Country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Country"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Name"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[House Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="House Number"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[House Number]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[Address Line 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Address Line 1"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Address Line 1]" />
+                    <inputColumn
+                      refId="Package\Import Customers\Prepare.Inputs[Derived Column Input].Columns[Date Of Birth]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Date Of Birth"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Date Of Birth]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Customers\Prepare.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import Customers\Prepare.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="150"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Category]"
+                      name="_Category"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,150)[TRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Category]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,150)TRIM(Category)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="50"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Country]"
+                      name="_Country"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)[TRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Country]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)TRIM(Country)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="100"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_State]"
+                      name="_State"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,100)[TRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[State]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,100)TRIM(State)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="150"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_City]"
+                      name="_City"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,150)""</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,150)""</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="1"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Gender]"
+                      name="_Gender"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[UPPER]([LEFT]([LTRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Gender]}),1))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(LEFT(LTRIM(Gender),1))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="150"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_Name]"
+                      name="_Name"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM]((DT_WSTR,150)#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Name]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM((DT_WSTR,150)Name)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_HouseNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_HouseNumber]"
+                      name="_HouseNumber"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)[TRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[House Number]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)TRIM([House Number])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_AddressLine1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      length="250"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_AddressLine1]"
+                      name="_AddressLine1"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,250)[TRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Address Line 1]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,250)TRIM([Address Line 1])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_DOB]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_DOB]"
+                      name="_DOB"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)[TRIM](#{Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Date Of Birth]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)TRIM([Date Of Birth])</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_SystemUserID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_SystemUserID]"
+                      name="_SystemUserID"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">NULL(DT_I4)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NULL(DT_I4)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_CustomerIdOutput]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="IgnoreFailure"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Output].Columns[_CustomerIdOutput]"
+                      name="_CustomerIdOutput"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">NULL(DT_I4)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NULL(DT_I4)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Customers\Prepare.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import Customers\Prepare.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Customers\Prepare.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Prepare.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Customers\Sample Data"
+              componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Sample Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Customers\Sample Data.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Sample Data Source]"
+                  connectionManagerRefId="Package.ConnectionManagers[Sample Data Source]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      length="150"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      length="50"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[House Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[House Number]"
+                      length="50"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[House Number]"
+                      name="House Number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Address Line 1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Address Line 1]"
+                      length="150"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Address Line 1]"
+                      name="Address Line 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      length="50"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Country]"
+                      length="50"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Category]"
+                      length="100"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Date Of Birth]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Date Of Birth]"
+                      length="50"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].Columns[Date Of Birth]"
+                      name="Date Of Birth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[House Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="House Number" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Address Line 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Address Line 1" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output].ExternalColumns[Date Of Birth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Date Of Birth" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Customers\Sample Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Customers.Paths[Derived Column Output]"
+              endId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Import Customers\Prepare.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import Customers.Paths[Flat File Source Output]"
+              endId="Package\Import Customers\Prepare.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Import Customers\Sample Data.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Import Customers.Paths[Lookup Match Output]"
+              endId="Package\Import Customers\Add or Update Customers.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Import Customers\Lookup Customer on Name + Gender + DOB.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{47E7A211-A512-40ED-918A-DEFBB63FB257}"
+      DTS:From="Package\Build Meta-Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import Customers" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Build Meta-Data"
+          TopLeft="158,128" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Import Customers"
+          TopLeft="361,258" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="235,170">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="208,88"
+              Start="0,0"
+              End="208,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40"
+                    Point2="0,44"
+                    Point3="4,44" />
+                  <mssgle:LineSegment
+                    End="204,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="204,44"
+                    Point2="208,44"
+                    Point3="208,48" />
+                  <mssgle:LineSegment
+                    End="208,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Build Meta-Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Build Meta-Data\Prepare"
+          TopLeft="269.5,103.75" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Build Meta-Data\Sample Data"
+          TopLeft="449,21.75" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Build Meta-Data\Multicast"
+          TopLeft="362.25,184" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Build Meta-Data\Sort Categories"
+          TopLeft="566.75,240.25" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Build Meta-Data\Sort Locations"
+          TopLeft="288.75,286.25" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Build Meta-Data\Lookup Category"
+          TopLeft="794.25,296" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Build Meta-Data\Add Update Category"
+          TopLeft="963.75,446.25" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Build Meta-Data\Add Update Locations"
+          TopLeft="252.5,386.25" />
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Sort Output1]"
+          TopLeft="361.75,328.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.25,58"
+              Start="0,0"
+              End="-18.25,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="-4,29" />
+                  <mssgle:LineSegment
+                    End="-14.25,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.25,29"
+                    Point2="-18.25,29"
+                    Point3="-18.25,33" />
+                  <mssgle:LineSegment
+                    End="-18.25,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Sort Output]"
+          TopLeft="717.75,261.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.5,55.75"
+              Start="0,0"
+              End="69,55.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.25,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.25,0"
+                    Point2="38.25,0"
+                    Point3="38.25,4" />
+                  <mssgle:LineSegment
+                    End="38.25,51.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.25,51.75"
+                    Point2="38.25,55.75"
+                    Point3="42.25,55.75" />
+                  <mssgle:LineSegment
+                    End="69,55.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Multicast Output 2]"
+          TopLeft="482.25,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.5,56.25"
+              Start="0,0"
+              End="77,56.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="38.25,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.25,0"
+                    Point2="42.25,0"
+                    Point3="42.25,4" />
+                  <mssgle:LineSegment
+                    End="42.25,52.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.25,52.25"
+                    Point2="42.25,56.25"
+                    Point3="46.25,56.25" />
+                  <mssgle:LineSegment
+                    End="77,56.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Multicast Output 1]"
+          TopLeft="422.25,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-60.5,60.25"
+              Start="0,0"
+              End="-60.5,52.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.125"
+                    Point2="0,30.125"
+                    Point3="-4,30.125" />
+                  <mssgle:LineSegment
+                    End="-56.5,30.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-56.5,30.125"
+                    Point2="-60.5,30.125"
+                    Point3="-60.5,34.125" />
+                  <mssgle:LineSegment
+                    End="-60.5,52.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Lookup Match Output]"
+          TopLeft="873.25,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="180,108.25"
+              Start="0,0"
+              End="180,100.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.1250000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.1250000000001"
+                    Point2="0,54.1250000000001"
+                    Point3="4,54.1250000000001" />
+                  <mssgle:LineSegment
+                    End="176,54.1250000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="176,54.1250000000001"
+                    Point2="180,54.1250000000001"
+                    Point3="180,58.1250000000001" />
+                  <mssgle:LineSegment
+                    End="180,100.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="41.80861328125,59.1250000000001,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Flat File Source Output]"
+          TopLeft="518.5,63.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-191.5,40"
+              Start="0,0"
+              End="-191.5,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="-4,20" />
+                  <mssgle:LineSegment
+                    End="-187.5,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-187.5,20"
+                    Point2="-191.5,20"
+                    Point3="-191.5,24" />
+                  <mssgle:LineSegment
+                    End="-191.5,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Build Meta-Data.Paths[Derived Column Output]"
+          TopLeft="327,145.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.25,38.25"
+              Start="0,0"
+              End="95.25,30.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.125"
+                    Point2="0,19.125"
+                    Point3="4,19.125" />
+                  <mssgle:LineSegment
+                    End="91.25,19.125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.25,19.125"
+                    Point2="95.25,19.125"
+                    Point3="95.25,23.125" />
+                  <mssgle:LineSegment
+                    End="95.25,30.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Build Meta-Data\Lookup Category">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Customers].[Categories]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import Customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="291,42"
+          Id="Package\Import Customers\Lookup Customer on Name + Gender + DOB"
+          TopLeft="295,289" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Import Customers\Add or Update Customers"
+          TopLeft="470,455" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Import Customers\Prepare"
+          TopLeft="242,143" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Import Customers\Sample Data"
+          TopLeft="134,43" />
+        <EdgeLayout
+          Id="Package\Import Customers.Paths[Derived Column Output]"
+          TopLeft="299.5,185">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="141,104"
+              Start="0,0"
+              End="141,96.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48"
+                    Point2="0,52"
+                    Point3="4,52" />
+                  <mssgle:LineSegment
+                    End="137,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="137,52"
+                    Point2="141,52"
+                    Point3="141,56" />
+                  <mssgle:LineSegment
+                    End="141,96.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Customers.Paths[Lookup Match Output]"
+          TopLeft="440.5,331">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129.5,124"
+              Start="0,0"
+              End="129.5,116.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58"
+                    Point2="0,62"
+                    Point3="4,62" />
+                  <mssgle:LineSegment
+                    End="125.5,62" />
+                  <mssgle:CubicBezierSegment
+                    Point1="125.5,62"
+                    Point2="129.5,62"
+                    Point3="129.5,66" />
+                  <mssgle:LineSegment
+                    End="129.5,116.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="16.55861328125,67,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import Customers.Paths[Flat File Source Output]"
+          TopLeft="203.5,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96,58"
+              Start="0,0"
+              End="96,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="92,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="92,29"
+                    Point2="96,29"
+                    Point3="96,33" />
+                  <mssgle:LineSegment
+                    End="96,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Customers\Lookup Customer on Name + Gender + DOB">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Customers].[Customers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

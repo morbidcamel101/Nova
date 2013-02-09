@@ -1,0 +1,133 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+    <Schema Namespace="Nova.Domain.Customers" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="Category">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" Unicode="true" />
+        <NavigationProperty Name="Customers" Relationship="Nova.Domain.Customers.CategoryCustomer" FromRole="Category" ToRole="Customer" />
+      </EntityType>
+      <EntityType Name="SystemUser">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <NavigationProperty Name="CustomerTrackings" Relationship="Nova.Domain.Customers.SystemUserCustomerTracking" FromRole="SystemUser" ToRole="CustomerTracking" />
+      </EntityType>
+      <EntityType Name="Location">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="City" Type="Edm.String" Nullable="false" />
+        <Property Name="State" Type="Edm.String" Nullable="false" />
+        <Property Name="Country" Type="Edm.String" Nullable="false" />
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Customers" Relationship="Nova.Domain.Customers.LocationCustomer" FromRole="Location" ToRole="Customer" />
+      </EntityType>
+      <EntityType Name="Customer">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Name" Type="Edm.String" Nullable="false" Unicode="true" />
+        <Property Name="Gender" Type="Edm.String" Nullable="false" MaxLength="1" FixedLength="true" />
+        <Property Name="HouseNumber" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AddressLine1" Type="Edm.String" Nullable="true" Unicode="true" />
+        <Property Name="DOB" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="LocationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CategoryId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Location" Relationship="Nova.Domain.Customers.LocationCustomer" FromRole="Customer" ToRole="Location" />
+        <NavigationProperty Name="Category" Relationship="Nova.Domain.Customers.CategoryCustomer" FromRole="Customer" ToRole="Category" />
+        <NavigationProperty Name="CustomerTrackings" Relationship="Nova.Domain.Customers.FK_Tracking_Customer" FromRole="Customer" ToRole="CustomerTracking" />
+      </EntityType>
+      <EntityType Name="CustomerTracking">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" p8:StoreGeneratedPattern="Identity" xmlns:p8="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="OperationType" Type="Edm.String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="true" />
+        <Property Name="Date" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="CustomerId" Type="Edm.Int64" Nullable="false" />
+        <Property Name="SystemUserId" Type="Edm.Int32" Nullable="true" />
+        <NavigationProperty Name="Customer" Relationship="Nova.Domain.Customers.FK_Tracking_Customer" FromRole="CustomerTracking" ToRole="Customer" />
+        <NavigationProperty Name="SystemUser" Relationship="Nova.Domain.Customers.SystemUserCustomerTracking" FromRole="CustomerTracking" ToRole="SystemUser" />
+      </EntityType>
+      <Association Name="LocationCustomer">
+        <End Role="Location" Type="Nova.Domain.Customers.Location" Multiplicity="1" />
+        <End Role="Customer" Type="Nova.Domain.Customers.Customer" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Location">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Customer">
+            <PropertyRef Name="LocationId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="CategoryCustomer">
+        <End Role="Category" Type="Nova.Domain.Customers.Category" Multiplicity="1" />
+        <End Role="Customer" Type="Nova.Domain.Customers.Customer" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Category">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="Customer">
+            <PropertyRef Name="CategoryId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="FK_Tracking_Customer">
+        <End Role="Customer" Type="Nova.Domain.Customers.Customer" Multiplicity="1" />
+        <End Role="CustomerTracking" Type="Nova.Domain.Customers.CustomerTracking" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Customer">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="CustomerTracking">
+            <PropertyRef Name="CustomerId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="SystemUserCustomerTracking">
+        <End Role="SystemUser" Type="Nova.Domain.Customers.SystemUser" Multiplicity="0..1" />
+        <End Role="CustomerTracking" Type="Nova.Domain.Customers.CustomerTracking" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="SystemUser">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="CustomerTracking">
+            <PropertyRef Name="SystemUserId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+    </Schema>
+    <Schema Namespace="Nova.DataAccess.Sql" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="CustomersContainer" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="Categories" EntityType="Nova.Domain.Customers.Category" />
+        <EntitySet Name="SystemUsers" EntityType="Nova.Domain.Customers.SystemUser" />
+        <EntitySet Name="Locations" EntityType="Nova.Domain.Customers.Location" />
+        <EntitySet Name="Customers" EntityType="Nova.Domain.Customers.Customer" />
+        <EntitySet Name="CustomerTrackings" EntityType="Nova.Domain.Customers.CustomerTracking" />
+        <AssociationSet Name="LocationCustomer" Association="Nova.Domain.Customers.LocationCustomer">
+          <End Role="Location" EntitySet="Locations" />
+          <End Role="Customer" EntitySet="Customers" />
+        </AssociationSet>
+        <AssociationSet Name="CategoryCustomer" Association="Nova.Domain.Customers.CategoryCustomer">
+          <End Role="Category" EntitySet="Categories" />
+          <End Role="Customer" EntitySet="Customers" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Tracking_Customer" Association="Nova.Domain.Customers.FK_Tracking_Customer">
+          <End Role="Customer" EntitySet="Customers" />
+          <End Role="CustomerTracking" EntitySet="CustomerTrackings" />
+        </AssociationSet>
+        <AssociationSet Name="SystemUserCustomerTracking" Association="Nova.Domain.Customers.SystemUserCustomerTracking">
+          <End Role="SystemUser" EntitySet="SystemUsers" />
+          <End Role="CustomerTracking" EntitySet="CustomerTrackings" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

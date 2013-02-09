@@ -1,0 +1,93 @@
+﻿<Window xmlns:nv="clr-namespace:Nova.UI"  x:Class="Nova.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nova Demo" Height="863" Width="1112" 
+        mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:my="clr-namespace:Nova.UI.DataService" 
+        Loaded="Window_Loaded" 
+        WindowState="Normal" 
+        WindowStartupLocation="CenterScreen" 
+        Foreground="#FF6E9CB1" Closing="Window_Closing">
+    <Window.Resources>
+        <CollectionViewSource x:Key="customersViewSource" d:DesignSource="{d:DesignInstance my:Customer, CreateList=True}" />
+        <CollectionViewSource x:Key="customerTrackingsViewSource" d:DesignSource="{d:DesignInstance my:CustomerTracking, CreateList=True}" />
+        <!-- Some declerations to make the buttons look good -->
+        <Thickness x:Key="NovaBorderThickness">3</Thickness>
+        <Color x:Key="NovaForegroundColor">#FF6E9CB1</Color>
+        <Color x:Key="NovaDisabledColor">#FFBABABA</Color>
+        <RadialGradientBrush x:Key="MetroAccentBrush" >
+            <GradientStop Color="#FF1F8BC7" Offset="0" />
+            <GradientStop Color="#FF204B64" Offset="1" />
+        </RadialGradientBrush>
+        <SolidColorBrush x:Key="NovaForegroundBrush" Color="{StaticResource NovaForegroundColor}"/>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource MetroAccentBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource NovaForegroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource NovaForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource NovaBorderThickness}"/>
+             <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Name="PART_Button" Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                <Setter Property="Background" Value="{StaticResource MetroDisabledBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <RadialGradientBrush >
+            <GradientStop Color="#FF1F8BC7" Offset="0" />
+            <GradientStop Color="#FF204B64" Offset="1" />
+        </RadialGradientBrush>
+    </Window.Background>
+    <Grid Height="Auto" Width="Auto" DataContext="{StaticResource customersViewSource}" IsManipulationEnabled="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"  />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Sample" Height="52" HorizontalAlignment="Left" Margin="224,9,0,0" Name="labelTitle" VerticalAlignment="Top" FontSize="28" Width="387" Foreground="#FFA9D8EC" />
+        <TextBox Name="textBoxSearch" Height="30" HorizontalAlignment="Right" Margin="0,23,12,0" VerticalAlignment="Top" Width="257" FontSize="16" VerticalContentAlignment="Center" TextChanged="Search_TextChanged" />
+        <Label Name="labelSearch" Content="Search" Height="30" HorizontalAlignment="Right" Margin="0,20,275,0" VerticalAlignment="Top" FontSize="18" Width="73" VerticalContentAlignment="Center" Foreground="#FF8BB9CE" FontWeight="Bold" HorizontalContentAlignment="Center" />
+        <Image Height="74" HorizontalAlignment="Left" Margin="0,-4,0,0" Name="imageLogo" Stretch="Fill" VerticalAlignment="Top" Width="92" Source="/NovaWPFClient;component/Assets/Images/nova.png" />
+        <Button Height="32" HorizontalAlignment="Left" Margin="136,21,0,0" Name="buttonLocations" VerticalAlignment="Top" Width="32" Focusable="True" Cursor="Hand" ToolTip="Show customers by location" Click="Locations_Click" >
+            <Button.Content>
+                <Image Height="32" HorizontalAlignment="Right" Name="imageLocation" VerticalAlignment="Top" Width="32" Focusable="True" Cursor="Hand" Source="/NovaWPFClient;component/Assets/Icons/pictos1_152_32px_blue.png" />
+            </Button.Content>
+        </Button>
+        <Button Height="32" HorizontalAlignment="Left" Margin="174,21,0,0" x:Name="buttonCategories" VerticalAlignment="Top" Width="32" Cursor="Hand" ToolTip="Show customers by categories" Click="Categories_Click" >
+            <Button.Content>
+                <Image Height="32" Focusable="False" HorizontalAlignment="Right" x:Name="imageCategories" Source="/NovaWPFClient;component/Assets/Icons/pictos2_145_32px_blue.png" VerticalAlignment="Top" Width="32" Cursor="Hand" />
+            </Button.Content>
+        </Button>
+        <Button Height="32" HorizontalAlignment="Left" Margin="98,21,0,0" x:Name="buttonCustomers" VerticalAlignment="Top" Width="32" Cursor="Hand" ToolTip="Show normal customer view." Click="Customers_Click" >
+            <Button.Content>
+                <Image Height="32" Focusable="False" HorizontalAlignment="Right" x:Name="imageCustomers" Source="/NovaWPFClient;component/Assets/Icons/pictos1_035_32px_blue.png" VerticalAlignment="Top" Width="32" Cursor="Hand" />
+            </Button.Content>
+        </Button>
+        <DockPanel Grid.Row="1">
+            <Frame x:Name="contentFrame" Padding="10" NavigationUIVisibility="Hidden" />
+        </DockPanel>
+        <Button Margin="0,19,402,0" Name="buttonSave" HorizontalAlignment="Right" Width="42" Height="42" VerticalAlignment="Top" ToolTip="Update changes to the cloud" Cursor="Hand" Click="Save_Click" >
+            <Button.Content>
+                <Image Name="imageSave" Stretch="Fill" HorizontalAlignment="Right" Width="42" Height="42" VerticalAlignment="Top" Source="/NovaWPFClient;component/Assets/Icons/CloudUpdate.png" ToolTip="Update changes to the cloud" />
+            </Button.Content>
+        </Button>
+        <Button Margin="0,19,354,0" Name="buttonAdd" HorizontalAlignment="Right" Width="42" Height="42" VerticalAlignment="Top" ToolTip="Add a customer..." Cursor="Hand" Click="Add_Click" >
+            <Button.Content>
+                <Image Name="imageAdd" Stretch="Fill" HorizontalAlignment="Right" Width="42" Height="42" VerticalAlignment="Top" Source="/NovaWPFClient;component/Assets/Icons/AddItem.png" ToolTip="Add a customer..." />
+            </Button.Content>
+        </Button>
+        
+    </Grid>
+    
+</Window>
