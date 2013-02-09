@@ -1,7 +1,7 @@
 Nova
 ====
 
-WCF Data Services over ODATA using Entity Framework 5.
+A Sample application to demonstrate WCF Data Services over ODATA using Entity Framework 5.
 
 # New Technologies Used 
 I selected the most recent technologies for a Visual Studio 2010 requirement someone gave me. 
