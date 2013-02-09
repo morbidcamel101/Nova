@@ -8,8 +8,10 @@ I selected the most recent technologies for a Visual Studio 2010 requirement som
 I wanted to showcase how you use these technologies in order to satisfy the functional requirements given to me with a modern approach. At the same time I also tried to incorporate various aspects of my skill set in the development process. 
 
 ## NuGet 
-Download: http://nuget.codeplex.com 
-Motivation: NuGet makes it easy to download extensions and the latest Microsoft packages. You can do so by simply right clicking on a project and selecting 'Manage NuGet Packages.
+### Download: 
+http://nuget.codeplex.com 
+### Motivation: 
+NuGet makes it easy to download extensions and the latest Microsoft packages. You can do so by simply right clicking on a project and selecting 'Manage NuGet Packages.
 
 ## SQL Server Data Tools 2012 (Dec 2012 Release) 
 ### Download: 
