@@ -3,7 +3,7 @@ Nova
 
 A Sample application to demonstrate WCF Data Services over ODATA using Entity Framework 5.
 
-# New Technologies Used 
+# Technologies Used 
 I selected the most recent technologies for a Visual Studio 2010 requirement someone gave me. 
 I wanted to showcase how you use these technologies in order to satisfy the functional requirements given to me with a modern approach. At the same time I also tried to incorporate various aspects of my skill set in the development process. 
 
